@@ -1,0 +1,46 @@
+version: "3"
+services:
+  backend:
+    container_name: dev_rails_backend
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./backend:/var/www/app
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    networks:
+      - dev_rails_network
+  redis:
+    container_name: dev_rails_redis
+    image: redis:6.2.7-alpine
+    expose:
+      - 6379
+    volumes:
+      - dev_rails_redis_volume:/data
+    networks:
+      - dev_rails_network
+  db:
+    container_name: dev_rails_db
+    image: mysql:8.0.33
+    command: >
+      mysqld
+        --default-authentication-plugin=mysql_native_password
+        --character-set-server=utf8mb4
+        --collation-server=utf8mb4_general_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - dev_rails_db_volume:/var/lib/mysql
+    networks:
+      - dev_rails_network
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+volumes:
+  dev_rails_db_volume:
+  dev_rails_redis_volume:
+networks:
+  dev_rails_network:
