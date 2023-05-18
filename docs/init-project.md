@@ -5,9 +5,6 @@
 ### Image build
 
 ```bash
-# 初期時は Dockerfile 以下のコードを line 32 以降はコメントしてから実行
-# COPY ./Gemfile $APP_ROOT/Gemfile
-# COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 docker-compose build --no-cache
 ```
 
