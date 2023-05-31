@@ -5,9 +5,15 @@ services:
     build:
       context: ./backend/
       dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: "db"
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD:
+    stdin_open: true
     tty: true
     volumes:
       - ./backend:/var/www/app
+      - dev_rails_backend_bundle_volume:/usr/local/bundle
     ports:
       - "3000:3000"
     links:
@@ -40,6 +46,7 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 volumes:
+  dev_rails_backend_bundle_volume:
   dev_rails_db_volume:
   dev_rails_redis_volume:
 networks:

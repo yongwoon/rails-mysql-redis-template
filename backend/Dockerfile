@@ -26,7 +26,6 @@ RUN echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen \
 
 RUN mkdir -p $APP_ROOT
 
-# WORKDIR：作業ディレクトリを指定
 WORKDIR $APP_ROOT
 
 COPY ./Gemfile $APP_ROOT/Gemfile
