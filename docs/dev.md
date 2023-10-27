@@ -18,20 +18,16 @@ docker-compose build --no-cache
     docker-compose run --rm backend bundle install
     ```
 
+  - Schema 生成 & DB migrate
+
+    ```bash
+    docker-compose run --rm backend bundle exec rails db:prepare
+    ```
+
   - Docker 起動
 
     ```bash
     docker-compose up
     ```
 
-  - Rails Container にアクセス
-
-    ```bash
-    docker-compose exec backend bash
-    ```
-
-  - Schema 生成 & DB migrate
-
-    ```bash
-    bundle exec rails db:prepare
-    ```
+- access to http://localhost:3000

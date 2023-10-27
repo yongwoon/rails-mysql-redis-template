@@ -4,7 +4,7 @@ services:
     container_name: dev_rails_backend
     build:
       context: ./backend/
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     environment:
       DATABASE_HOST: "db"
       DATABASE_USERNAME: root

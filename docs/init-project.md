@@ -23,9 +23,9 @@ docker-compose exec app bash
 ### Generate rails project
 
 ```bash
-gem install rails
+docker-compose run --rm backend gem install rails
 
-bundle exec rails new ./tutorial-project --skip-bundle
+docker-compose run --rm backend bundle exec rails new ./tutorial-project --skip-bundle --database=mysql --skip-turbolinks --skip-test
 ```
 
 - optionsn
